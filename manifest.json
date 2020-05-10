@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "name": "Chrome Extension Booklog",
+  "short_name": "Chrome Extension Booklog",
+  "version": "1.0.0",
+  "description": "Chrome Extension Booklog",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "identity",
+    "https://accounts.google.com/*",
+    "https://www.googleapis.com/*"
+  ],
+  "oauth2": {
+    "client_id": "862979686689-ctcjmki4f5m1s976qcq04s509uremfqh.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/userinfo.profile"]
+  },
+  "key": "API KEY",
+  "browser_action": {
+    "default_popup": "popup/index.html",
+    "default_title": "Booklog"
+  },
+  "icons": {
+    "128": "./assets/icon.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["contentscript.js"],
+      "css": ["contentscript.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval' 'sha256-...='; object-src 'self'"
+}
